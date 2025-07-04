@@ -16,6 +16,8 @@ public class MainPage {
         this.driver = driver;
     }
 
+    //Url
+    private static final String BASE_URL = "https://qa-scooter.praktikum-services.ru/";
     //Подтверждение кук
     private final By cookieButton = By.id("rcc-confirm-button");
     //Кнопка заказать верхняя
@@ -26,7 +28,7 @@ public class MainPage {
     private final By accordion = By.className("accordion");
 
     public void open() {
-        driver.get("https://qa-scooter.praktikum-services.ru/");
+        driver.get(BASE_URL);
     }
 
     public void acceptCookies() {
@@ -52,5 +54,9 @@ public class MainPage {
 
     public void clickUpperOrderButton() {
         driver.findElement(upperOrderButton).click();
+    }
+
+    public void clickLowerOrderButton() {
+        driver.findElement(lowerOrderButton).click();
     }
 }

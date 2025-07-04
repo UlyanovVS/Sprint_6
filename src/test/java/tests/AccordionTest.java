@@ -1,25 +1,13 @@
 package tests;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
+import base.BaseTest;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import pageobject.MainPage;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class AccordionTest {
-
-    private WebDriver driver;
-
-    @BeforeEach
-    public void setUp() {
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
-    }
+public class AccordionTest extends BaseTest {
 
     @ParameterizedTest
     @CsvSource({
@@ -40,11 +28,6 @@ public class AccordionTest {
         mainPage.clickAccordionQuestion(index);
         String actual = mainPage.getAccordionAnswerText(index);
         assertTrue(actual.contains(expected));
-    }
-
-    @AfterEach
-    public void tearDown() {
-        driver.quit();
     }
 
 }
